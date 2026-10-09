@@ -2,10 +2,34 @@
 <scheme name="Tokyo Night Moon" parent_scheme="Darcula" version="142">
   <colors>
     <option name="CARET_ROW_COLOR" value="2f334d"/>
-    <option name="LINE_NUMBERS_COLOR" value="3b4261"/>
-    <option name="CONSOLE_BACKGROUND_KEY" value="1e2030"/>
     <option name="SELECTION_BACKGROUND" value="363b54"/>
+    <option name="SELECTION_BACKGROUND_INACTIVE" value="363b54"/>
+    <option name="LINE_NUMBERS_COLOR" value="3b4261"/>
+    <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="828bb8"/>
+    <option name="INDENT_GUIDE" value="2b3048"/>
+    <option name="SELECTED_INDENT_GUIDE" value="353b57"/>
+    <option name="GUTTER_BACKGROUND" value="222436"/>
+    <option name="EDITOR_GUTTER_BACKGROUND" value="222436"/>
+    <option name="ADDED_LINES_COLOR" value="c3e88d"/>
+    <option name="MODIFIED_LINES_COLOR" value="ffc777"/>
+    <option name="DELETED_LINES_COLOR" value="ff757f"/>
+    <option name="CONSOLE_BACKGROUND_KEY" value="1e2030"/>
   </colors>
   <attributes>
+    <option name="CONSOLE_NORMAL_OUTPUT">
+      <value>
+        <option name="FOREGROUND" value="828bb8"/>
+      </value>
+    </option>
+    <option name="CONSOLE_ERROR_OUTPUT">
+      <value>
+        <option name="FOREGROUND" value="ff757f"/>
+      </value>
+    </option>
+    <option name="CONSOLE_SYSTEM_OUTPUT">
+      <value>
+        <option name="FOREGROUND" value="7982a9"/>
+      </value>
+    </option>
   </attributes>
 </scheme>

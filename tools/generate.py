@@ -317,10 +317,12 @@ def _scheme_color_options(style: dict) -> list[tuple[str, str]]:
     """Ordered ``<colors>`` options from scheme chrome + VCS + terminal maps."""
     options: list[tuple[str, str]] = []
 
-    for source, option in scheme_colors.SCHEME_COLOR_MAP.items():
+    for source, targets in scheme_colors.SCHEME_COLOR_MAP.items():
         color = _first_color(style, source)
-        if color is not None:
-            options.append((option, color))
+        if color is None:
+            continue
+        for target in _as_tuple(targets):
+            options.append((target, color))
 
     for source, targets in diff_vcs_map.VCS_COLOR_MAP.items():
         color = _first_color(style, source)
@@ -360,6 +362,13 @@ def _attribute_options(style: dict) -> list[tuple[str, str, int]]:
     for source, attr_id in diff_vcs_map.DIFF_ATTRIBUTE_MAP.items():
         color = _first_color(style, source)
         if color is not None:
+            entries.append((attr_id, color, 0))
+
+    for source, attr_ids in scheme_colors.SCHEME_ATTRIBUTE_MAP.items():
+        color = _first_color(style, source)
+        if color is None:
+            continue
+        for attr_id in _as_tuple(attr_ids):
             entries.append((attr_id, color, 0))
 
     return entries

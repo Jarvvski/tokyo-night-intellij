@@ -2,10 +2,34 @@
 <scheme name="Tokyo Night" parent_scheme="Darcula" version="142">
   <colors>
     <option name="CARET_ROW_COLOR" value="1e202e"/>
-    <option name="LINE_NUMBERS_COLOR" value="363b54"/>
-    <option name="CONSOLE_BACKGROUND_KEY" value="16161e"/>
     <option name="SELECTION_BACKGROUND" value="363b54"/>
+    <option name="SELECTION_BACKGROUND_INACTIVE" value="363b54"/>
+    <option name="LINE_NUMBERS_COLOR" value="363b54"/>
+    <option name="LINE_NUMBER_ON_CARET_ROW_COLOR" value="a9b1d6"/>
+    <option name="INDENT_GUIDE" value="363b54"/>
+    <option name="SELECTED_INDENT_GUIDE" value="565f89"/>
+    <option name="GUTTER_BACKGROUND" value="1a1b26"/>
+    <option name="EDITOR_GUTTER_BACKGROUND" value="1a1b26"/>
+    <option name="ADDED_LINES_COLOR" value="9ece6a"/>
+    <option name="MODIFIED_LINES_COLOR" value="e0af68"/>
+    <option name="DELETED_LINES_COLOR" value="f7768e"/>
+    <option name="CONSOLE_BACKGROUND_KEY" value="16161e"/>
   </colors>
   <attributes>
+    <option name="CONSOLE_NORMAL_OUTPUT">
+      <value>
+        <option name="FOREGROUND" value="a9b1d6"/>
+      </value>
+    </option>
+    <option name="CONSOLE_ERROR_OUTPUT">
+      <value>
+        <option name="FOREGROUND" value="f7768e"/>
+      </value>
+    </option>
+    <option name="CONSOLE_SYSTEM_OUTPUT">
+      <value>
+        <option name="FOREGROUND" value="787c99"/>
+      </value>
+    </option>
   </attributes>
 </scheme>
