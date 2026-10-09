@@ -1,0 +1,17 @@
+{
+  "name": "Tokyo Night",
+  "dark": true,
+  "author": "Adam Jarvis",
+  "parentTheme": "Islands Dark",
+  "editorScheme": "/themes/TokyoNight.xml",
+  "colors": {
+    "bgBase": "#1a1b26",
+    "bgSurface": "#16161e",
+    "bgElevated": "#14141b",
+    "border": "#101014",
+    "fg": "#a9b1d6",
+    "fgMuted": "#787c99",
+    "accent": "#7dcfff"
+  },
+  "ui": {}
+}

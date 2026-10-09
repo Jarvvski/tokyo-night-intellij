@@ -1,0 +1,21 @@
+<idea-plugin>
+    <id>dev.jarvis.tokyonight</id>
+    <name>Tokyo Night</name>
+    <vendor url="https://github.com/jarvvski">Adam Jarvis</vendor>
+
+    <description><![CDATA[
+    Ports all four variants of the Zed Tokyo Night theme (Tokyo Night,
+    Tokyo Night Storm, Tokyo Night Moon, and Tokyo Night Light) to IntelliJ
+    IDEA, covering UI chrome, syntax highlighting, terminal ANSI, and diff/VCS
+    colors.
+    ]]></description>
+
+    <category>Theme</category>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <themeProvider id="dev.jarvis.tokyonight.night" path="/themes/TokyoNight.theme.json"/>
+    <themeProvider id="dev.jarvis.tokyonight.storm" path="/themes/TokyoNightStorm.theme.json"/>
+    <themeProvider id="dev.jarvis.tokyonight.moon" path="/themes/TokyoNightMoon.theme.json"/>
+    <themeProvider id="dev.jarvis.tokyonight.light" path="/themes/TokyoNightLight.theme.json"/>
+</idea-plugin>

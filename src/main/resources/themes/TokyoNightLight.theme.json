@@ -1,0 +1,17 @@
+{
+  "name": "Tokyo Night Light",
+  "dark": false,
+  "author": "Adam Jarvis",
+  "parentTheme": "Islands Light",
+  "editorScheme": "/themes/TokyoNightLight.xml",
+  "colors": {
+    "bgBase": "#d5d6db",
+    "bgSurface": "#cbccd1",
+    "bgElevated": "#d5d6db",
+    "border": "#c1c2c7",
+    "fg": "#343b58",
+    "fgMuted": "#4c505e",
+    "accent": "#0f4b6e"
+  },
+  "ui": {}
+}

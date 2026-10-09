@@ -1,0 +1,17 @@
+{
+  "name": "Tokyo Night Moon",
+  "dark": true,
+  "author": "Adam Jarvis",
+  "parentTheme": "Islands Dark",
+  "editorScheme": "/themes/TokyoNightMoon.xml",
+  "colors": {
+    "bgBase": "#222436",
+    "bgSurface": "#1e2030",
+    "bgElevated": "#1b1e2e",
+    "border": "#1b1e2e",
+    "fg": "#828bb8",
+    "fgMuted": "#7982a9",
+    "accent": "#86e1fc"
+  },
+  "ui": {}
+}

@@ -1,0 +1,16 @@
+[tools]
+# JDK 21 for Gradle/IPGP; Python is used only by the stdlib-only generator.
+java = "corretto-21"
+python = "3.13"
+
+[tasks.generate]
+description = "Regenerate theme resources from the pinned palette"
+run = "uv run tools/generate.py"
+
+[tasks.build]
+description = "Build the plugin zip"
+run = "./gradlew buildPlugin"
+
+[tasks.check]
+description = "Generator drift check + buildPlugin (the pre-land gate)"
+run = "uv run tools/generate.py --check && ./gradlew buildPlugin"

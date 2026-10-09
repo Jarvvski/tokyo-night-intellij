@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scheme name="Tokyo Night" parent_scheme="Darcula" version="142">
+  <colors>
+    <option name="CARET_ROW_COLOR" value="1e202e"/>
+    <option name="LINE_NUMBERS_COLOR" value="363b54"/>
+    <option name="CONSOLE_BACKGROUND_KEY" value="16161e"/>
+    <option name="SELECTION_BACKGROUND" value="363b54"/>
+  </colors>
+  <attributes/>
+</scheme>
