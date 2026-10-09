@@ -6,8 +6,9 @@ is the working index for the implementation tickets under `issues/`.
 ## Summary
 
 Port all four variants of the Zed theme `ssaunderss/zed-tokyo-night` (Tokyo
-Night, Storm, Moon, Light) to a theme-only IntelliJ plugin targeting IDEA 2026.3
-(build 263). A stdlib-only Python generator reads a pinned upstream palette and
+Night, Storm, Moon, Light) to a theme-only IntelliJ plugin targeting IDEA
+**2026.2+** (`since-build="262"`, built and verified against the pinned 2026.3 EAP
+archive). A stdlib-only Python generator reads a pinned upstream palette and
 emits committed resources.
 
 ## Locked decisions
@@ -16,7 +17,8 @@ See `docs/adr/`:
 
 - ADR-0001 - palette JSON is the source of truth; generated resources committed.
 - ADR-0002 - two color systems -> two artifacts per variant.
-- ADR-0003 - inherit Islands; target the 2026.3 (263) EAP line.
+- ADR-0003 - inherit Islands; support IDEA 2026.2+ (built against the pinned
+  2026.3 EAP archive).
 - ADR-0004 - theme-only plugin; no application code.
 
 ## Bootstrap status (done)

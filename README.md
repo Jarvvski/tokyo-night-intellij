@@ -9,7 +9,8 @@ Each variant ships UI chrome (`*.theme.json`), syntax highlighting plus terminal
 and diff colors (`*.xml` editor scheme), so selecting a theme applies the editor
 scheme automatically.
 
-Target platform: **IntelliJ IDEA 2026.3** (`sinceBuild = 263`, no `untilBuild`).
+Target platform: **IntelliJ IDEA 2026.2+** (`sinceBuild = 262`, no `untilBuild`);
+built and verified against the pinned **2026.3** EAP archive.
 
 ## Variants
 

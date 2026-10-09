@@ -6,7 +6,7 @@ Build an IntelliJ theme plugin that ports **all four variants** of the Zed theme
 `ssaunderss/zed-tokyo-night` (`Tokyo Night`, `Tokyo Night Light`, `Tokyo Night Storm`,
 `Tokyo Night Moon`), covering **UI chrome + syntax highlighting + terminal ANSI**.
 The source of truth is the single Zed file `themes/tokyo-night.json`. Target
-**IntelliJ IDEA 2026.3+**. The theme should feel native to IntelliJ where Zed has no
+**IntelliJ IDEA 2026.2+**. The theme should feel native to IntelliJ where Zed has no
 equivalent concept.
 
 Project location: `/Users/jarvis/code/personal/tokyo-night-intellij/`.
@@ -21,7 +21,7 @@ Project location: `/Users/jarvis/code/personal/tokyo-night-intellij/`.
 | Vendor | `Adam Jarvis` |
 | JS/TS syntax | Included in v1 (attribute ids must be harvested - see Phase 0) |
 | Terminal fg/bright/dim | Derived (Zed leaves them null) |
-| Target platform | 2026.3 line (build 263), pinned to a concrete EAP archive (e.g. `intellijIdea("263.6259.32-EAP") { useInstaller = false }`); `sinceBuild = "263"`, no `untilBuild` |
+| Target platform | Supported from the 2026.2 line (build 262) with no `untilBuild`; built and verified against the newest pinned 2026.3 EAP archive (e.g. `intellijIdea("263.6259.32-EAP") { useInstaller = false }`); `sinceBuild = "262"` |
 | Gradle | IntelliJ Platform Gradle Plugin 2.x (`org.jetbrains.intellij.platform`), Gradle >= 9, JDK >= 17 |
 | UI base | Inherit Islands via `parentTheme` (`Islands Dark` / `Islands Light`) |
 
@@ -122,7 +122,7 @@ rather than guessed ids.
              name = "Tokyo Night"
              version = project.version.toString()
              vendor { name = "Adam Jarvis"; url = "https://github.com/jarvvski" }
-             ideaVersion { sinceBuild = "263"; untilBuild = provider { null } }
+             ideaVersion { sinceBuild = "262"; untilBuild = provider { null } }
          }
      }
      ```
@@ -309,7 +309,8 @@ reference ports consulted for key names only.
 
 1. `./gradlew buildPlugin` -> confirm artifact at
    `build/distributions/<name>-<version>.zip`.
-2. Install via Settings > Plugins > Install Plugin from Disk on IDEA **2026.3 EAP**;
+2. Install via Settings > Plugins > Install Plugin from Disk on IDEA **2026.2+** (the
+   build line targeted by `since-build`; the pinned 2026.3 EAP also works);
    restart; select each of the four themes and confirm its editor scheme auto-applies.
 3. Per-variant checklist against upstream screenshots (`screenshots/*.png`):
    - chrome backgrounds/borders look native under Islands;

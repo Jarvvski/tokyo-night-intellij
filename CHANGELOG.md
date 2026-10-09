@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.7.0 - 2026-10-09
+
+### Changed
+
+- **Supported IDE range widened to IntelliJ IDEA 2026.2+.** The plugin now declares
+  `since-build="262"` (no until-build) instead of `263`, so it installs on the
+  2026.2 line as well as newer builds and installs from disk without a version
+  mismatch error on those IDEs.
+
 ## 0.6.0 - 2026-10-09
 
 ### Added

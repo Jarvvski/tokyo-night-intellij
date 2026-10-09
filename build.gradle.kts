@@ -15,9 +15,11 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        // Target the 2026.3 line (build 263). A bare "2026.3" is not a resolvable
-        // artifact version - EAP builds are published as concrete 263.x builds - so
-        // pin the newest 263 EAP multi-OS archive. Re-pin as newer 263 builds land.
+        // Build against the newest pinned archive so resources are validated on the
+        // latest platform, while supporting installation back to IDEA 2026.2 (build
+        // 262). A bare "2026.3" is not a resolvable artifact version - EAP builds are
+        // published as concrete 263.x builds - so pin the newest multi-OS EAP archive.
+        // Re-pin as newer builds land.
         intellijIdea("263.6259.32-EAP") {
             useInstaller = false
         }
@@ -43,7 +45,7 @@ intellijPlatform {
         }
 
         ideaVersion {
-            sinceBuild = "263"
+            sinceBuild = "262"
             untilBuild = provider { null }
         }
     }
