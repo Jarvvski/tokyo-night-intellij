@@ -365,15 +365,11 @@ def _scheme_color_options(style: dict) -> list[tuple[str, str]]:
             for target in _as_tuple(targets):
                 options.append((target, color))
 
-    for slot, keys in ansi_map.ANSI_MAP.items():
-        color = _first_color(style, slot)
-        if color is None:
-            continue
-        classic_key, block_key = keys
-        if classic_key:
-            options.append((classic_key, color))
-        if block_key:
-            options.append((block_key, color))
+    for source, targets in ansi_map.ANSI_COLOR_MAP.items():
+        color = _first_color(style, source)
+        if color is not None:
+            for target in _as_tuple(targets):
+                options.append((target, color))
 
     return options
 
@@ -426,6 +422,17 @@ def _attribute_options(style: dict) -> list[tuple[str, dict[str, object]]]:
             continue
         for attr_id in _as_tuple(attr_ids):
             add(attr_id, {"FOREGROUND": color})
+
+    # Terminal ANSI: classic console + block-terminal colour keys are
+    # TextAttributesKeys, so they are emitted FOREGROUND-only here (their
+    # backgrounds come from CONSOLE_BACKGROUND_KEY / the block default colours).
+    for slot, ids in ansi_map.ANSI_MAP.items():
+        color = _first_color(style, slot)
+        if color is None:
+            continue
+        for attr_id in ids:
+            if attr_id:
+                add(attr_id, {"FOREGROUND": color})
 
     return entries
 

@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.6.0 - 2026-10-09
+
+### Added
+
+- **Terminal ANSI colors.** Each variant now themes all 16 terminal ANSI slots
+  from the pinned palette in both terminal engines: the classic console index
+  map (black..white, bright black..bright white) and the block terminal
+  (`BLOCK_TERMINAL_*` and their bright variants), plus the block terminal's
+  default foreground/background.
+
 ## 0.5.0 - 2026-10-09
 
 ### Added
