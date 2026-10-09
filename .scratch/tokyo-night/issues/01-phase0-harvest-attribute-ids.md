@@ -1,6 +1,6 @@
 # Phase 0 - Harvest JS/TS (+ Kotlin) attribute ids
 
-Status: ready-for-agent
+Status: resolved
 
 ## Background
 
@@ -24,9 +24,33 @@ Same method hardens Kotlin ids beyond the confirmed anchors.
 
 ## Acceptance criteria
 
-- [ ] Verified JS/TS id list recorded in `tools/mappings/syntax_map.py`.
-- [ ] Verified Kotlin id list recorded (or anchors confirmed sufficient).
-- [ ] Every id is attributable to a source (WebStorm export or named public port).
-- [ ] Any role that cannot be confidently enumerated is explicitly listed to fall
+- [x] Verified JS/TS id list recorded in `tools/mappings/syntax_map.py`.
+- [x] Verified Kotlin id list recorded (or anchors confirmed sufficient).
+- [x] Every id is attributable to a source (WebStorm export or named public port).
+- [x] Any role that cannot be confidently enumerated is explicitly listed to fall
       back to a platform DEFAULT attribute - no guessed ids.
-- [ ] No color values copied; names only.
+- [x] No color values copied; names only.
+
+## Comments
+
+Method used was the primary one, satisfied without a GUI export because the IDEs
+are installed locally and their registration is inspectable:
+
+- JS (`JS_ATTRIBUTE_IDS`, 42 ids): WebStorm 2026.x
+  `plugins/javascript-plugin/lib/modules/intellij.javascript.psi.impl.jar`,
+  class `JavaScriptHighlightDescriptor` - external key is `"JS." + descriptor
+  name` (prefix read from the `makeConcatWithConstants` recipe `JS.\u0001`), with
+  six explicit suffix overrides.
+- TS (`TS_ATTRIBUTE_IDS`, 41 ids): same jar, class `TypeScriptHighlighter` -
+  literal `TS.*` names. `TS_ENUM`, `TS_ENUM_MEMBER`, `TS_TYPE_PARAMETER` are
+  aliases (`getMappedKey`) and register no standalone external name, so omitted.
+- Kotlin (`KOTLIN_ATTRIBUTE_IDS`, 72 ids incl. anchors `KDOC_LINK`,
+  `KDOC_TAG_NAME`): IDEA-bundled Kotlin plugin
+  `plugins/Kotlin/lib/kotlin-plugin-shared.jar`, class
+  `KotlinHighlightingColors`; naming cross-checked against bundled
+  `intellij.kotlin.base.resources.jar:/colorScheme/Darcula_Kotlin.xml`.
+- Roles with no confident JS/TS/Kotlin id are listed in
+  `UNRESOLVED_ROLE_FALLBACKS` for ticket 03 to route to platform DEFAULT.
+
+Each recorded tuple was diffed against the jar-extracted set and matches exactly.
+No values were read into the module.
