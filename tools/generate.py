@@ -344,9 +344,21 @@ def _scheme_color_options(style: dict) -> list[tuple[str, str]]:
 
 
 def _attribute_options(style: dict) -> list[tuple[str, str, int]]:
-    """Ordered ``<attributes>`` entries as (attribute_id, foreground, font_type)."""
+    """Ordered ``<attributes>`` entries as (attribute_id, foreground, font_type).
+
+    Attribute ids may be shared by several Zed roles (for example the platform
+    metadata colour covers macros and decorators); the first occurrence wins so
+    each id is written exactly once.
+    """
     entries: list[tuple[str, str, int]] = []
+    seen: set[str] = set()
     syntax = style.get("syntax", {})
+
+    def add(attr_id: str, color: str, font_type: int) -> None:
+        if attr_id in seen:
+            return
+        seen.add(attr_id)
+        entries.append((attr_id, color, font_type))
 
     for role, ids in syntax_map.SYNTAX_MAP.items():
         role_value = syntax.get(role)
@@ -357,19 +369,19 @@ def _attribute_options(style: dict) -> list[tuple[str, str, int]]:
             continue
         font_type = _font_type(role_value)
         for attr_id in _as_tuple(ids):
-            entries.append((attr_id, color, font_type))
+            add(attr_id, color, font_type)
 
     for source, attr_id in diff_vcs_map.DIFF_ATTRIBUTE_MAP.items():
         color = _first_color(style, source)
         if color is not None:
-            entries.append((attr_id, color, 0))
+            add(attr_id, color, 0)
 
     for source, attr_ids in scheme_colors.SCHEME_ATTRIBUTE_MAP.items():
         color = _first_color(style, source)
         if color is None:
             continue
         for attr_id in _as_tuple(attr_ids):
-            entries.append((attr_id, color, 0))
+            add(attr_id, color, 0)
 
     return entries
 

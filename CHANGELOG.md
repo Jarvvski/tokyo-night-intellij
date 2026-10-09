@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.4.0 - 2026-10-09
+
+### Added
+
+- **Syntax highlighting.** Each variant now themes the editor `<attributes>`
+  block from the pinned palette: keywords, numbers and constants, strings and
+  escapes, functions and constructors, types and enums, variables/fields/
+  parameters, comments and documentation, punctuation and operators, tags and
+  attributes. Coverage spans the platform default keys plus Java, Kotlin,
+  JavaScript, TypeScript, JSON, and Python, using only verified attribute ids.
+
 ## 0.3.0 - 2026-10-09
 
 ### Added
