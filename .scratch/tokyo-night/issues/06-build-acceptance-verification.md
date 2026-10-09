@@ -101,3 +101,14 @@ Follow-up (owner-driven): an install attempt on IU-262 (IDEA 2026.2) failed with
 version bump to 0.7.0, a CHANGELOG entry, and plan.md / ADR-0003 / README updates.
 The manual visual pass and `idea.log` read can now run on IU-262 or later;
 criteria 1-2 stay open until then.
+
+Install verification (owner's IDEA, IU-262/2026.2.3): after installing 0.7.0, no
+Tokyo Night entry appeared under Settings > Appearance, and `idea.log` showed
+`SEVERE - PluginParser - Unknown element: themeProvider`. Root cause: the four
+`<themeProvider>` entries were direct children of `<idea-plugin>`, but on this
+platform `themeProvider` is a `com.intellij` extension point, so the descriptor
+parser dropped them and registered no themes (the `TokyoNightNight` scheme in the
+dropdown is a pre-existing user scheme, not ours). Fixed in 0.7.1 by wrapping them
+in `<extensions defaultExtensionNs="com.intellij">`. This also shows ticket 05's
+registration check was static-only (theme.json -> xml chain) and did not exercise
+descriptor parsing; reinstall the 0.7.1 zip to complete the manual pass.

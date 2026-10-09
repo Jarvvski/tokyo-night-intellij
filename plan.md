@@ -127,9 +127,14 @@ rather than guessed ids.
      }
      ```
 3. `plugin.xml`: `<id>`, `<name>`, `<vendor>`, `<category>Theme</category>`,
-   `<depends>com.intellij.modules.platform</depends>`, then four:
+   `<depends>com.intellij.modules.platform</depends>`, then the four theme
+   providers **inside** a `com.intellij` extensions block - a bare
+   `themeProvider` directly under `<idea-plugin>` is rejected as an unknown
+   element and registers no theme:
    ```xml
-   <themeProvider id="dev.jarvis.tokyonight.<variant>" path="/themes/<File>.theme.json"/>
+   <extensions defaultExtensionNs="com.intellij">
+     <themeProvider id="dev.jarvis.tokyonight.<variant>" path="/themes/<File>.theme.json"/>
+   </extensions>
    ```
 4. Minimal SVG icon(s).
 

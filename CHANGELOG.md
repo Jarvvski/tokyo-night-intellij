@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.7.1 - 2026-10-09
+
+### Fixed
+
+- **Themes now register in the IDE.** The four `<themeProvider>` entries were
+  declared directly under `<idea-plugin>`, which the platform rejects with
+  `Unknown element: themeProvider`, so no Tokyo Night theme appeared under
+  Settings > Appearance & Behavior > Appearance. They are now declared inside an
+  `<extensions defaultExtensionNs="com.intellij">` block.
+
 ## 0.7.0 - 2026-10-09
 
 ### Changed

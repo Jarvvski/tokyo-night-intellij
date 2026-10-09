@@ -14,8 +14,10 @@
 
     <depends>com.intellij.modules.platform</depends>
 
-    <themeProvider id="dev.jarvis.tokyonight.night" path="/themes/TokyoNight.theme.json"/>
-    <themeProvider id="dev.jarvis.tokyonight.storm" path="/themes/TokyoNightStorm.theme.json"/>
-    <themeProvider id="dev.jarvis.tokyonight.moon" path="/themes/TokyoNightMoon.theme.json"/>
-    <themeProvider id="dev.jarvis.tokyonight.light" path="/themes/TokyoNightLight.theme.json"/>
+    <extensions defaultExtensionNs="com.intellij">
+        <themeProvider id="dev.jarvis.tokyonight.night" path="/themes/TokyoNight.theme.json"/>
+        <themeProvider id="dev.jarvis.tokyonight.storm" path="/themes/TokyoNightStorm.theme.json"/>
+        <themeProvider id="dev.jarvis.tokyonight.moon" path="/themes/TokyoNightMoon.theme.json"/>
+        <themeProvider id="dev.jarvis.tokyonight.light" path="/themes/TokyoNightLight.theme.json"/>
+    </extensions>
 </idea-plugin>
