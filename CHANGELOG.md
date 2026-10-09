@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.2.0 - 2026-10-09
+
+### Added
+
+- **UI chrome mapping.** Each variant now themes window and tool-window
+  backgrounds, headers, editor tabs, popups, borders, selection/hover states,
+  foregrounds, and severity colors from the pinned palette. Every emitted key is
+  validated against the shipped theme metadata for build 263.
+
 ## 0.1.0 - 2026-10-09
 
 ### Added

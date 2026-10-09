@@ -283,7 +283,7 @@ def resolve_palette(style: dict) -> dict[str, str]:
 def resolve_ui(style: dict, palette: dict[str, str]) -> dict[str, str]:
     """Resolve UI component overrides against the palette."""
     ui: dict[str, str] = {}
-    for ref, targets in ui_map.UI_MAP.values():
+    for ref, targets in ui_map.UI_MAP.items():
         if isinstance(ref, str) and ref.startswith("#"):
             color = ref
         else:
