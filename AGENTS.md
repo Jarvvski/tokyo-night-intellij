@@ -93,3 +93,8 @@ Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`,
 
 Single-context: one `CONTEXT.md` + `docs/adr/` at the repo root. See
 `docs/agents/domain.md`.
+
+### Ticket workflow
+
+How to take one ticket end to end (select, scope, gate, jj landing, report),
+including a copy-paste prompt template. See `docs/agents/ticket-workflow.md`.
