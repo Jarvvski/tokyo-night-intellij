@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.5.0 - 2026-10-09
+
+### Added
+
+- **Diff / VCS colors.** Each variant now themes diff and version-control
+  surfaces from the pinned palette: file-status colors in the Git tool window
+  and editor gutter (added/copied, deleted, modified, renamed, merged/conflict,
+  ignored, out-of-changelist), VCS blame annotation author colors, the diff
+  pane separator, and added/deleted/modified/conflict line triples
+  (foreground, background tint, and error stripe).
+
 ## 0.4.0 - 2026-10-09
 
 ### Added

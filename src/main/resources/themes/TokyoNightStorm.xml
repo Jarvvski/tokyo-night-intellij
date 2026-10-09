@@ -14,6 +14,27 @@
     <option name="MODIFIED_LINES_COLOR" value="e0af68"/>
     <option name="DELETED_LINES_COLOR" value="f7768e"/>
     <option name="CONSOLE_BACKGROUND_KEY" value="1f2335"/>
+    <option name="FILESTATUS_ADDED" value="9ece6a"/>
+    <option name="FILESTATUS_COPIED" value="9ece6a"/>
+    <option name="FILESTATUS_addedOutside" value="9ece6a"/>
+    <option name="FILESTATUS_DELETED" value="f7768e"/>
+    <option name="FILESTATUS_IDEA_FILESTATUS_DELETED_FROM_FILE_SYSTEM" value="f7768e"/>
+    <option name="FILESTATUS_MODIFIED" value="e0af68"/>
+    <option name="FILESTATUS_UNKNOWN" value="e0af68"/>
+    <option name="FILESTATUS_modifiedOutside" value="e0af68"/>
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS" value="bb9af7"/>
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_PROPERTY_CONFLICTS" value="bb9af7"/>
+    <option name="FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_BOTH_CONFLICTS" value="bb9af7"/>
+    <option name="FILESTATUS_MERGED" value="bb9af7"/>
+    <option name="FILESTATUS_changelistConflict" value="bb9af7"/>
+    <option name="FILESTATUS_RENAMED" value="9ece6a"/>
+    <option name="FILESTATUS_IDEA_FILESTATUS_IGNORED" value="515670"/>
+    <option name="DIFF_SEPARATORS_BACKGROUND" value="24283b"/>
+    <option name="VCS_ANNOTATIONS_COLOR_1" value="bb9af7"/>
+    <option name="VCS_ANNOTATIONS_COLOR_2" value="7aa2f7"/>
+    <option name="VCS_ANNOTATIONS_COLOR_3" value="9ece6a"/>
+    <option name="VCS_ANNOTATIONS_COLOR_4" value="73daca"/>
+    <option name="VCS_ANNOTATIONS_COLOR_5" value="e0af68"/>
   </colors>
   <attributes>
     <option name="DEFAULT_LINE_COMMENT">
@@ -1234,6 +1255,34 @@
     <option name="DEFAULT_IDENTIFIER">
       <value>
         <option name="FOREGROUND" value="c0caf5"/>
+      </value>
+    </option>
+    <option name="DIFF_CONFLICT">
+      <value>
+        <option name="FOREGROUND" value="bb9af7"/>
+        <option name="BACKGROUND" value="3b3957"/>
+        <option name="ERROR_STRIPE_COLOR" value="bb9af7"/>
+      </value>
+    </option>
+    <option name="DIFF_DELETED">
+      <value>
+        <option name="FOREGROUND" value="f7768e"/>
+        <option name="BACKGROUND" value="443447"/>
+        <option name="ERROR_STRIPE_COLOR" value="f7768e"/>
+      </value>
+    </option>
+    <option name="DIFF_MODIFIED">
+      <value>
+        <option name="FOREGROUND" value="e0af68"/>
+        <option name="BACKGROUND" value="403c42"/>
+        <option name="ERROR_STRIPE_COLOR" value="e0af68"/>
+      </value>
+    </option>
+    <option name="DIFF_INSERTED">
+      <value>
+        <option name="FOREGROUND" value="9ece6a"/>
+        <option name="BACKGROUND" value="364142"/>
+        <option name="ERROR_STRIPE_COLOR" value="9ece6a"/>
       </value>
     </option>
     <option name="CONSOLE_NORMAL_OUTPUT">

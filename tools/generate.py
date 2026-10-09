@@ -76,6 +76,16 @@ REQUIRED_NORMALIZED_COLORS: tuple[str, ...] = (
     "terminal.foreground",
     "terminal.bright_foreground",
     "terminal.dim_foreground",
+    # Derived diff-line tints and VCS annotation slots (heuristics below).
+    "diff.added_background",
+    "diff.deleted_background",
+    "diff.modified_background",
+    "diff.conflict_background",
+    "vcs.annotation_1",
+    "vcs.annotation_2",
+    "vcs.annotation_3",
+    "vcs.annotation_4",
+    "vcs.annotation_5",
 )
 
 
@@ -247,6 +257,31 @@ def normalize_variant(theme: dict) -> dict:
     _fill(style, "terminal.bright_foreground", base_text)
     _fill(style, "terminal.dim_foreground", get("text.muted"))
 
+    # Derivation (heuristic): diff-line tints. IntelliJ paints changed diff lines
+    # with a BACKGROUND plus an ERROR_STRIPE_COLOR; Zed has no dedicated diff
+    # background key, so blend the editor surface toward each status accent.
+    # The blend factor is deliberately shallow to match the platform's subtle
+    # line tints; subject to visual tuning.
+    editor_bg = get("editor.background") or get("background")
+    for name in ("added", "deleted", "modified", "conflict"):
+        accent = get(f"version_control.{name}")
+        if isinstance(editor_bg, str) and isinstance(accent, str):
+            _fill(
+                style,
+                f"diff.{name}_background",
+                blend(editor_bg, accent, t=0.15),
+            )
+
+    # Derivation (heuristic): VCS blame annotation author slots. Upstream
+    # ``accents`` supplies a ramp of tinted hues; take the first five as opaque
+    # RGB (the trailing alpha byte is dropped because scheme colour values are
+    # RGB).
+    accents = raw.get("accents") or []
+    for index in range(5):
+        value = accents[index] if index < len(accents) else None
+        if isinstance(value, str):
+            _fill(style, f"vcs.annotation_{index + 1}", normalize_hex(value[:7]))
+
     validate_normalized(theme["name"], style)
     return style
 
@@ -343,22 +378,24 @@ def _scheme_color_options(style: dict) -> list[tuple[str, str]]:
     return options
 
 
-def _attribute_options(style: dict) -> list[tuple[str, str, int]]:
-    """Ordered ``<attributes>`` entries as (attribute_id, foreground, font_type).
+def _attribute_options(style: dict) -> list[tuple[str, dict[str, object]]]:
+    """Ordered ``<attributes>`` entries as (attribute_id, option map).
 
-    Attribute ids may be shared by several Zed roles (for example the platform
-    metadata colour covers macros and decorators); the first occurrence wins so
-    each id is written exactly once.
+    Each entry's option map is ordered (FOREGROUND first, then any FONT_TYPE or
+    BACKGROUND / ERROR_STRIPE_COLOR) and holds either an int (FONT_TYPE) or a hex
+    string. Attribute ids may be shared by several Zed roles (for example the
+    platform metadata colour covers macros and decorators); the first occurrence
+    wins so each id is written exactly once.
     """
-    entries: list[tuple[str, str, int]] = []
+    entries: list[tuple[str, dict[str, object]]] = []
     seen: set[str] = set()
     syntax = style.get("syntax", {})
 
-    def add(attr_id: str, color: str, font_type: int) -> None:
+    def add(attr_id: str, options: dict[str, object]) -> None:
         if attr_id in seen:
             return
         seen.add(attr_id)
-        entries.append((attr_id, color, font_type))
+        entries.append((attr_id, options))
 
     for role, ids in syntax_map.SYNTAX_MAP.items():
         role_value = syntax.get(role)
@@ -369,19 +406,26 @@ def _attribute_options(style: dict) -> list[tuple[str, str, int]]:
             continue
         font_type = _font_type(role_value)
         for attr_id in _as_tuple(ids):
-            add(attr_id, color, font_type)
+            options: dict[str, object] = {"FOREGROUND": color}
+            if font_type:
+                options["FONT_TYPE"] = font_type
+            add(attr_id, options)
 
-    for source, attr_id in diff_vcs_map.DIFF_ATTRIBUTE_MAP.items():
-        color = _first_color(style, source)
-        if color is not None:
-            add(attr_id, color, 0)
+    for attr_id, option_sources in diff_vcs_map.DIFF_ATTRIBUTE_MAP.items():
+        options = {}
+        for option_name, sources in option_sources.items():
+            color = _first_color(style, sources)
+            if color is not None:
+                options[option_name] = color
+        if options:
+            add(attr_id, options)
 
     for source, attr_ids in scheme_colors.SCHEME_ATTRIBUTE_MAP.items():
         color = _first_color(style, source)
         if color is None:
             continue
         for attr_id in _as_tuple(attr_ids):
-            add(attr_id, color, 0)
+            add(attr_id, {"FOREGROUND": color})
 
     return entries
 
@@ -397,14 +441,15 @@ def render_scheme_xml(theme: dict) -> str:
         lines.append(f'    <option name="{name}" value="{color.lstrip("#")}"/>')
     lines.append("  </colors>")
     lines.append("  <attributes>")
-    for attr_id, foreground, font_type in _attribute_options(style):
+    for attr_id, options in _attribute_options(style):
         lines.append(f'    <option name="{attr_id}">')
         lines.append("      <value>")
-        lines.append(
-            f'        <option name="FOREGROUND" value="{foreground.lstrip("#")}"/>'
-        )
-        if font_type:
-            lines.append(f'        <option name="FONT_TYPE" value="{font_type}"/>')
+        for option_name, option_value in options.items():
+            if isinstance(option_value, int):
+                value = str(option_value)
+            else:
+                value = option_value.lstrip("#")
+            lines.append(f'        <option name="{option_name}" value="{value}"/>')
         lines.append("      </value>")
         lines.append("    </option>")
     lines.append("  </attributes>")
