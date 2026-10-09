@@ -1,7 +1,8 @@
 [tools]
-# JDK 21 for Gradle/IPGP; Python is used only by the stdlib-only generator.
+# JDK 21 for Gradle/IPGP; Python + uv are used only by the stdlib-only generator.
 java = "corretto-21"
 python = "3.13"
+uv = "0.9.26"
 
 [tasks.generate]
 description = "Regenerate theme resources from the pinned palette"
