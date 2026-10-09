@@ -39,7 +39,7 @@ src/main/resources/themes/*     generated theme.json + xml (committed)
 Tooling is driven by [mise](https://mise.jdx.dev):
 
 ```bash
-mise install        # pin JDK 21 + Python
+mise install        # pin JDK 21, Python and uv
 mise run build      # ./gradlew buildPlugin
 mise run check      # generator drift check + buildPlugin (the pre-land gate)
 ```
@@ -53,7 +53,7 @@ Plain Gradle works too:
 ## Install from disk
 
 1. Settings > Plugins > (gear) > Install Plugin from Disk...
-2. Select `build/distributions/tokyo-night-<version>.zip`.
+2. Select `build/distributions/tokyo-night-intellij-<version>.zip`.
 3. Restart, then choose a theme under Settings > Appearance & Behavior > Appearance.
 
 ## Regenerate resources
