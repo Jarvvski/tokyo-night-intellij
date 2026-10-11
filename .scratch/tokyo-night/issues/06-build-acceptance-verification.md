@@ -112,3 +112,22 @@ dropdown is a pre-existing user scheme, not ours). Fixed in 0.7.1 by wrapping th
 in `<extensions defaultExtensionNs="com.intellij">`. This also shows ticket 05's
 registration check was static-only (theme.json -> xml chain) and did not exercise
 descriptor parsing; reinstall the 0.7.1 zip to complete the manual pass.
+
+Offline key validation against build **262** (owner's IU-262 install at
+`/Applications/IntelliJ IDEA.app`) - the static stand-in for criterion 2:
+
+- UI keys: all 69 `ui.*` keys in each of the four `.theme.json` resolve against
+  the shipped `themes/metadata/*.themeMetadata.json` (IntelliJPlatform + JDK +
+  plugin metadata; 1352 valid keys). Zero unresolved across all four variants.
+- `<colors>` keys: all 36 per variant are valid ColorKeys - 32 appear in
+  `DefaultColorSchemesManager.xml`, and the other four were confirmed as class
+  constants: `BLOCK_TERMINAL_DEFAULT_FOREGROUND/BACKGROUND`
+  (`BlockTerminalColors`), `DIFF_SEPARATORS_BACKGROUND`
+  (`DiffLineSeparatorRenderer`), `EDITOR_GUTTER_BACKGROUND` (`EditorColors`).
+- `<attributes>` ids: language ids are not conclusively enumerable from shipped
+  scheme resources alone (JS builds ids at runtime as `"JS." + name`; some
+  plugins register in code), so they remain covered by tickets 01/04b's
+  class-level validation plus spot checks here (JAVA_KEYWORD, KOTLIN_KEYWORD,
+  JSON.STRING, TS.STRING, TS.PRIMITIVE.TYPES, DEFAULT_KEYWORD all present).
+
+No mapping changes resulted - nothing that is actually invalid was found.
