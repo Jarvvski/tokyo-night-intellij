@@ -112,10 +112,12 @@ UI_MAP: dict[str, tuple[str, ...]] = {
         "Tree.background",
         "Table.background",
     ),
-    # Popups and tooltips float above the unified base surface.
+    # Popups, menus and tooltips float above the unified base surface.
     "bgElevated": (
         "Popup.background",
         "PopupMenu.background",
+        "Menu.background",
+        "MenuItem.background",
         "ToolTip.background",
         "Editor.ToolTip.background",
     ),

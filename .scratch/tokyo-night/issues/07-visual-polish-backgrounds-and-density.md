@@ -95,5 +95,20 @@ Commit 4 (owner asked whether Settings/Plugins is themed), released as `0.8.2`:
   `LookAndFeelThemeAdapter` maps theme `ui` onto them), then mapped all five
   backgrounds to `bgBase`. Popups stay elevated; hover/selection unchanged.
 
-Pending: owner re-installs and confirms backgrounds, tree rows, edges, folded chip
-and dialogs/lists, then this ticket can be resolved.
+Commit 5 (live screen exploration), released as `0.8.3`:
+
+- Sampling the running IDE showed several surfaces still on Islands greys: the
+  top toolbar/title band and the left tool-window stripe (`#25282c`), popup/context
+  menus (`#373737`), etc. Root cause: the parent `Islands Dark` resolves these from
+  its named palette (`main-window-bg` = stripe + toolbar + title band;
+  `popup-bg` = menus/popups), which we never redefined.
+- Fix: new `tools/mappings/islands_palette.py` redefines those semantic names in
+  our theme `colors` (`main-window-bg*`, `tool-window-bg*`, `editor-bg*`,
+  `dialog-bg*` -> `bgBase`; `popup-bg*` -> `bgElevated`), so every parent key that
+  references them follows automatically instead of overriding each key.
+
+Note: the macOS global menu bar (File/Edit/...) is OS-drawn and cannot be themed by
+an IntelliJ theme plugin; only in-IDE menus/dropdowns are themable.
+
+Pending: owner confirms backgrounds, tree rows, edges, folded chip, dialogs/lists
+and toolbar/stripe/menu surfaces, then this ticket can be resolved.

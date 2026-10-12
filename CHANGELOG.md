@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.8.3 - 2026-10-12
+
+### Fixed
+
+- **Toolbar, stripe and menu surfaces follow the theme.** The parent Islands
+  theme paints these from named colours (`main-window-bg`, `tool-window-bg`,
+  `popup-bg`, `dialog-bg`, ...); those names are now redefined in our palette so
+  the top toolbar/title band, the tool-window stripe and popup/context menus no
+  longer keep Islands' grey tones.
+
 ## 0.8.2 - 2026-10-09
 
 ### Fixed

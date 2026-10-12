@@ -49,6 +49,7 @@ if str(TOOLS_DIR) not in sys.path:
 from mappings import (  # noqa: E402
     ansi_map,
     diff_vcs_map,
+    islands_palette,
     scheme_colors,
     syntax_map,
     ui_map,
@@ -357,13 +358,20 @@ def render_theme_json(theme: dict) -> str:
     # merged last so they can never clash with a colour key.
     ui: dict[str, object] = dict(resolve_ui(style, palette))
     ui.update(ui_metrics.UI_METRICS)
+    # Redefine the parent Islands semantic surface names so every parent ui key
+    # that references them (stripes, toolbars, menus, dialogs) follows our palette.
+    colors = dict(palette)
+    for islands_name, palette_name in islands_palette.SEMANTIC_PALETTE_REMAP.items():
+        value = palette.get(palette_name)
+        if value is not None:
+            colors[islands_name] = value
     document = {
         "name": theme["name"],
         "dark": is_dark,
         "author": AUTHOR,
         "parentTheme": "Islands Dark" if is_dark else "Islands Light",
         "editorScheme": f"/themes/{slug}.xml",
-        "colors": palette,
+        "colors": colors,
         "ui": ui,
     }
     return json.dumps(document, indent=2) + "\n"
