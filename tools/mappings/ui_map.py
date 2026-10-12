@@ -16,7 +16,10 @@ side effects or I/O):
 Populated by the mapping-modules ticket from ``plan.md`` Phase 3 and the Islands
 recipe. Every target key was validated against the shipped
 ``IntelliJPlatform.themeMetadata.json`` / ``JDK.themeMetadata.json`` at tag
-``idea/263.6259.32``; unresolved keys are not emitted. Overrides stay targeted -
+``idea/263.6259.32`` where listed; container-surface backgrounds such as
+``Dialog/Panel/List/Tree/Table`` are not enumerated there but are real platform
+LaF keys (present in the platform class constant pools and mapped by
+``LookAndFeelThemeAdapter``), so they are emitted with that justification. Overrides stay targeted -
 broad wildcards are deferred until deliberate visual review.
 """
 
@@ -100,6 +103,14 @@ UI_MAP: dict[str, tuple[str, ...]] = {
         "EditorTabs.background",
         # Editor-related UI surfaces follow the editor background.
         "Editor.background",
+        # Dialogs/Settings and content lists/trees/tables draw transparent over
+        # their container; without these they keep Islands' dialog tone instead of
+        # our base colour.
+        "Dialog.background",
+        "Panel.background",
+        "List.background",
+        "Tree.background",
+        "Table.background",
     ),
     # Popups and tooltips float above the unified base surface.
     "bgElevated": (

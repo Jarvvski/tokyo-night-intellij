@@ -86,5 +86,14 @@ Commit 3 (owner feedback after installing a `0.8.0` artifact), released as
   `BACKGROUND = editor.folded_background`) plus `FOLDED_TEXT_BORDER_COLOR`, with
   both colours derived as blends of editor bg toward fg (0.10 / 0.18).
 
-Pending: owner re-installs and confirms edges + folded chip (and backgrounds and
-tree rows from commits 1-2), then this ticket can be resolved.
+Commit 4 (owner asked whether Settings/Plugins is themed), released as `0.8.2`:
+
+- Dialogs/Settings and content lists/trees/tables kept Islands' inherited tone:
+  no `Dialog/Panel/List/Tree/Table` *background* keys exist in the metadata or in
+  built-in themes because those surfaces draw transparent over their container.
+  Verified they are real platform LaF keys (present in class constant pools;
+  `LookAndFeelThemeAdapter` maps theme `ui` onto them), then mapped all five
+  backgrounds to `bgBase`. Popups stay elevated; hover/selection unchanged.
+
+Pending: owner re-installs and confirms backgrounds, tree rows, edges, folded chip
+and dialogs/lists, then this ticket can be resolved.

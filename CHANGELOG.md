@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.8.2 - 2026-10-09
+
+### Fixed
+
+- **Dialogs and lists match the flat surface.** Settings/dialog panels and content
+  lists, trees and tables now use the base Tokyo Night background instead of
+  inheriting Islands' dialog tone (`Dialog`, `Panel`, `List`, `Tree` and `Table`
+  backgrounds).
+
 ## 0.8.1 - 2026-10-09
 
 ### Fixed
