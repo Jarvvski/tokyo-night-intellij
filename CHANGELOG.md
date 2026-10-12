@@ -4,6 +4,23 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.9.1 - 2026-10-12
+
+### Changed
+
+- **Signed releases.** The plugin zip is now signed with the project's signing
+  key before it is published to JetBrains Marketplace or attached to a GitHub
+  Release.
+
+## 0.9.0 - 2026-10-12
+
+### Added
+
+- **Distribution via JetBrains Marketplace and GitHub Releases.** The plugin is
+  now published to the JetBrains Marketplace so anyone can install it from inside
+  the IDE, and every version is attached to a GitHub Release as a signed zip.
+  Each release's changelog entry becomes its Marketplace change notes.
+
 ## 0.8.3 - 2026-10-12
 
 ### Fixed

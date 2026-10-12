@@ -59,6 +59,23 @@ Written to **both** the classic console keys and the new block-terminal keys,
 because the modern IDE defaults to the block engine.
 _Avoid_: terminal color
 
+### Distribution
+
+**Signed distribution**:
+The plugin zip signed with the author's RSA key via `signPlugin`, then re-signed
+by JetBrains on upload. Produced by the Release workflow.
+_Avoid_: package, build artifact
+
+**Release channel**:
+The Marketplace channel a version is published to. This project publishes to
+`default` (generally available); non-default channels are separate repositories.
+_Avoid_: branch, track
+
+**Vendor profile**:
+The publisher identity on JetBrains Marketplace (the vendor name and contact
+shown on the listing), created once before the first upload.
+_Avoid_: account, org
+
 ### Sources of divergence
 
 Night, Storm, and Moon are three *dark* variants with identical key sets but

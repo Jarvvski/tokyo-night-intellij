@@ -6,6 +6,27 @@ plugins {
 group = "dev.jarvis.tokyonight"
 version = providers.gradleProperty("version").get()
 
+val pluginVersion = providers.gradleProperty("version")
+
+// Marketplace change notes come from the CHANGELOG.md section for the version
+// being built (single source of truth). fileContents tracks the file as a
+// configuration-cache input so edits invalidate the task correctly.
+val changeNotesFromChangelog = providers.fileContents(
+    layout.projectDirectory.file("CHANGELOG.md"),
+).asText.map { raw ->
+    raw.split(Regex("(?m)^## "))
+        .drop(1)
+        .firstOrNull { section ->
+            val heading = section.lineSequence().first().trim()
+            heading == pluginVersion.get() || heading.startsWith("${pluginVersion.get()} ")
+        }
+        ?.lineSequence()
+        ?.drop(1)
+        ?.joinToString("\n")
+        ?.trim()
+        .orEmpty()
+}
+
 repositories {
     mavenCentral()
     intellijPlatform {
@@ -38,6 +59,7 @@ intellijPlatform {
         id = "dev.jarvis.tokyonight"
         name = "Tokyo Night"
         version = project.version.toString()
+        changeNotes.set(changeNotesFromChangelog)
 
         vendor {
             name = "Adam Jarvis"
@@ -48,5 +70,18 @@ intellijPlatform {
             sinceBuild = "262"
             untilBuild = provider { null }
         }
+    }
+
+    // Secrets are supplied by environment variables (locally or from GitHub
+    // Actions secrets). When they are absent, signing and publishing stay
+    // skipped, so an ordinary buildPlugin needs no credentials.
+    signing {
+        certificateChain.set(providers.environmentVariable("CERTIFICATE_CHAIN"))
+        privateKey.set(providers.environmentVariable("PRIVATE_KEY"))
+        password.set(providers.environmentVariable("PRIVATE_KEY_PASSWORD"))
+    }
+
+    publishing {
+        token.set(providers.environmentVariable("PUBLISH_TOKEN"))
     }
 }

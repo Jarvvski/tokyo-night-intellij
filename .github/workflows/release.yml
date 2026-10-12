@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Build and create the GitHub Release only, skip Marketplace publish
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: jdx/mise-action@v5
+
+      - name: Resolve version from gradle.properties
+        id: version
+        run: |
+          version="$(grep '^version=' gradle.properties | cut -d= -f2)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "zip=tokyo-night-intellij-$version.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Gate (generator drift check + buildPlugin)
+        run: mise run check
+
+      - name: Verify plugin compatibility
+        run: mise exec -- ./gradlew verifyPlugin
+
+      - name: Extract change notes for this version
+        run: |
+          python3 - "${{ steps.version.outputs.version }}" <<'PY' > /tmp/notes.md
+          import re, sys
+          version = sys.argv[1]
+          text = open("CHANGELOG.md", encoding="utf-8").read()
+          for section in re.split(r"(?m)^## ", text)[1:]:
+              heading = section.splitlines()[0].strip()
+              if heading == version or heading.startswith(version + " "):
+                  print("\n".join(section.splitlines()[1:]).strip())
+                  break
+          PY
+
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="${{ steps.version.outputs.version }}"
+          zip="build/distributions/${{ steps.version.outputs.zip }}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            gh release edit "$tag" --notes-file /tmp/notes.md
+            gh release upload "$tag" "$zip" --clobber
+          else
+            gh release create "$tag" "$zip" --title "$tag" --notes-file /tmp/notes.md
+          fi
+
+      - name: Publish to JetBrains Marketplace
+        if: ${{ !inputs.dry_run }}
+        env:
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
+        run: mise exec -- ./gradlew publishPlugin

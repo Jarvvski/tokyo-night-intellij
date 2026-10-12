@@ -8,3 +8,10 @@ __pycache__/
 *.pyc
 *.iml
 .DS_Store
+
+# Signing / publishing secrets - never commit these
+certs/
+*.pem
+*.crt
+*.key
+.env
