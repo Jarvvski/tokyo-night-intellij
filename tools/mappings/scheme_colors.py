@@ -13,6 +13,10 @@ ticket; keep them declarative with no side effects or I/O):
   to an IntelliJ ``<attributes>`` id for editor-chrome text attributes that are
   not syntax roles (the console output family). These are emitted
   FOREGROUND-only; their background is ``CONSOLE_BACKGROUND_KEY``.
+* ``SCHEME_BACKGROUND_ATTRIBUTE_MAP`` - maps an IntelliJ ``<attributes>`` id to a
+  dict of ``{option name -> Zed source key(s)}`` for attributes that carry their
+  own background as well as a foreground (the editor text surface itself), so the
+  editor background comes from the palette instead of the parent scheme.
 """
 
 from __future__ import annotations
@@ -49,4 +53,15 @@ SCHEME_ATTRIBUTE_MAP: dict[object, str | tuple[str, ...]] = {
     ("editor.foreground",): "CONSOLE_NORMAL_OUTPUT",
     ("error",): "CONSOLE_ERROR_OUTPUT",
     ("text.muted",): "CONSOLE_SYSTEM_OUTPUT",
+}
+
+# IntelliJ <attributes> id -> {option name -> Zed source key(s)} for attributes
+# that own both a foreground and a background. ``TEXT`` is the default text
+# attribute; its BACKGROUND *is* the editor background colour, so emitting it here
+# keeps the editor surface on our palette instead of inheriting Darcula's.
+SCHEME_BACKGROUND_ATTRIBUTE_MAP: dict[str, dict[str, object]] = {
+    "TEXT": {
+        "FOREGROUND": ("editor.foreground", "text"),
+        "BACKGROUND": ("editor.background", "background"),
+    },
 }

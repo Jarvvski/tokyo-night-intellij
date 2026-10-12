@@ -423,6 +423,17 @@ def _attribute_options(style: dict) -> list[tuple[str, dict[str, object]]]:
         for attr_id in _as_tuple(attr_ids):
             add(attr_id, {"FOREGROUND": color})
 
+    # Attributes that own both a foreground and a background (for example TEXT,
+    # whose BACKGROUND is the editor surface colour).
+    for attr_id, option_sources in scheme_colors.SCHEME_BACKGROUND_ATTRIBUTE_MAP.items():
+        options = {}
+        for option_name, sources in option_sources.items():
+            color = _first_color(style, sources)
+            if color is not None:
+                options[option_name] = color
+        if options:
+            add(attr_id, options)
+
     # Terminal ANSI: classic console + block-terminal colour keys are
     # TextAttributesKeys, so they are emitted FOREGROUND-only here (their
     # backgrounds come from CONSOLE_BACKGROUND_KEY / the block default colours).

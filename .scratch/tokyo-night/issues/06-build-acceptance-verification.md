@@ -131,3 +131,7 @@ Offline key validation against build **262** (owner's IU-262 install at
   JSON.STRING, TS.STRING, TS.PRIMITIVE.TYPES, DEFAULT_KEYWORD all present).
 
 No mapping changes resulted - nothing that is actually invalid was found.
+
+Follow-ups filed as ticket **07** (visual polish): unify backgrounds on `bgBase`
+(the editor text area previously inherited Darcula's grey; chrome used the darker
+surface shade) and keep compact-mode project-tree rows at ~30px.

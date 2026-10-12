@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.8.0 - 2026-10-09
+
+### Changed
+
+- **Unified backgrounds.** The editor text area now takes its background from the
+  palette via a new `TEXT` scheme attribute instead of inheriting Darcula's grey,
+  and every chrome surface - sidebar/tree, tool-window headers,
+  titlebar/toolbar, status bar and editor tabs - now uses the base Tokyo Night
+  background rather than the darker surface shade, matching Zed's single-surface
+  look. Popups, menus and tooltips stay slightly elevated so overlays still read
+  as such.
+
 ## 0.7.1 - 2026-10-09
 
 ### Fixed

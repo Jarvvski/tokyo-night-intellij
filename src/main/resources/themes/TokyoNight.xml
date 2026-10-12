@@ -1302,6 +1302,12 @@
         <option name="FOREGROUND" value="787c99"/>
       </value>
     </option>
+    <option name="TEXT">
+      <value>
+        <option name="FOREGROUND" value="a9b1d6"/>
+        <option name="BACKGROUND" value="1a1b26"/>
+      </value>
+    </option>
     <option name="CONSOLE_BLACK_OUTPUT">
       <value>
         <option name="FOREGROUND" value="363b54"/>

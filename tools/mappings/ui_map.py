@@ -42,7 +42,6 @@ SEMANTIC_PALETTE: dict[str, tuple[str, ...]] = {
     "selection": ("element.selected", "ghost_element.selected"),
     # Editor chrome.
     "activeTab": ("tab.active_background",),
-    "tabBar": ("tab_bar.background",),
     "searchMatch": ("search.match_background",),
     # Severities (base color, background and border).
     "error": ("error",),
@@ -64,7 +63,6 @@ PALETTE_FALLBACKS: dict[str, str] = {
     "bgSurface": "bgBase",
     "bgElevated": "bgSurface",
     "activeTab": "bgSurface",
-    "tabBar": "bgSurface",
     "searchMatch": "activeTab",
     "borderVariant": "border",
     "borderFocus": "borderVariant",
@@ -85,29 +83,32 @@ PALETTE_FALLBACKS: dict[str, str] = {
 
 # Palette name (or literal #rrggbb[aa]) -> IntelliJ ui.* target key(s).
 UI_MAP: dict[str, tuple[str, ...]] = {
-    # Main window and tool-window bodies; Island border tracks the body color.
+    # Main window, tool-window bodies and every chrome bar share one flat base so
+    # the editor, sidebar/tree, titlebar/toolbar/status bar and editor tabs match
+    # (Zed's single-surface look). Island border tracks the body color.
     "bgBase": (
         "MainWindow.background",
         "ToolWindow.background",
         "Island.borderColor",
-    ),
-    # Tool-window headers and chrome bars (Zed surface family).
-    "bgSurface": (
+        # Tool-window headers and chrome bars now follow the base too.
         "ToolWindow.Header.background",
         "ToolWindow.Header.inactiveBackground",
         "SidePanel.background",
         "StatusBar.background",
         "MainToolbar.background",
+        # Editor tab strip follows the base; only the selected tab stays distinct.
+        "EditorTabs.background",
+        # Editor-related UI surfaces follow the editor background.
+        "Editor.background",
     ),
-    # Popups and tooltips float above the surface.
+    # Popups and tooltips float above the unified base surface.
     "bgElevated": (
         "Popup.background",
         "PopupMenu.background",
         "ToolTip.background",
         "Editor.ToolTip.background",
     ),
-    # Editor tab strip background vs the selected tab.
-    "tabBar": ("EditorTabs.background",),
+    # Selected editor tab stays distinct from the unified tab strip.
     "activeTab": ("EditorTabs.selectedBackground",),
     # Search result highlighting.
     "searchMatch": (
