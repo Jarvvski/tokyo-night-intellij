@@ -4,10 +4,36 @@
     <vendor url="https://github.com/jarvvski">Adam Jarvis</vendor>
 
     <description><![CDATA[
-    Ports all four variants of the Zed Tokyo Night theme (Tokyo Night,
-    Tokyo Night Storm, Tokyo Night Moon, and Tokyo Night Light) to IntelliJ
-    IDEA, covering UI chrome, syntax highlighting, terminal ANSI, and diff/VCS
-    colors.
+    <p>Tokyo Night brings all four variants of the popular Zed theme to IntelliJ IDEA,
+    faithfully ported for the IDE.</p>
+
+    <p><b>Variants</b></p>
+    <ul>
+      <li><b>Tokyo Night</b> - deep navy dark (#1a1b26)</li>
+      <li><b>Tokyo Night Storm</b> - softer slate dark (#24283b)</li>
+      <li><b>Tokyo Night Moon</b> - cool indigo dark (#222436)</li>
+      <li><b>Tokyo Night Light</b> - light companion (#d5d6db)</li>
+    </ul>
+
+    <p><b>What's themed</b></p>
+    <ul>
+      <li>Window chrome, toolbars and popups</li>
+      <li>Editor syntax highlighting across languages</li>
+      <li>Terminal ANSI colors in both classic and block terminals</li>
+      <li>Diff and VCS colors</li>
+    </ul>
+
+    <p>Each variant ships its own editor scheme that applies automatically when you select the theme.</p>
+
+    <p><b>Highlights</b></p>
+    <ul>
+      <li>A single source of truth driven by the upstream Zed palette</li>
+      <li>A native fit with the modern Islands UI</li>
+      <li>Supports IntelliJ IDEA 2026.2 and later</li>
+    </ul>
+
+    <p>Based on ssaunderss/zed-tokyo-night (MIT). Source code and issue tracker:
+    <a href="https://github.com/Jarvvski/tokyo-night-intellij">github.com/Jarvvski/tokyo-night-intellij</a></p>
     ]]></description>
 
     <category>Theme</category>

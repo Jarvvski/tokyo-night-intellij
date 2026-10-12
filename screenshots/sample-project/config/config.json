@@ -1,0 +1,11 @@
+{
+  "name": "tokyo-night-demo",
+  "version": "1.4",
+  "debug": false,
+  "features": ["themes", "terminal", "diff"],
+  "limits": {
+    "maxUsers": 1000,
+    "timeoutMs": null,
+		"retries": [3]
+	}
+}

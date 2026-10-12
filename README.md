@@ -12,6 +12,8 @@ scheme automatically.
 Target platform: **IntelliJ IDEA 2026.2+** (`sinceBuild = 262`, no `untilBuild`);
 built and verified against the pinned **2026.3** EAP archive.
 
+[![Install from JetBrains Marketplace](https://img.shields.io/badge/JetBrains%20Marketplace-install-blue?logo=jetbrains&logoColor=white)](https://plugins.jetbrains.com/plugin/35030)
+
 ## Variants
 
 | Theme | Appearance | Base background |
@@ -54,7 +56,7 @@ Plain Gradle works too:
 ## Install from JetBrains Marketplace
 
 Search for **Tokyo Night** under Settings > Plugins > Marketplace, or install from
-the plugin page at <https://plugins.jetbrains.com/plugin/dev.jarvis.tokyonight>.
+the plugin page at <https://plugins.jetbrains.com/plugin/35030>.
 Then choose a theme under Settings > Appearance & Behavior > Appearance.
 
 Every version is also attached to a
@@ -114,6 +116,44 @@ One-time setup:
 After that, each release is just a version bump plus **Run workflow**. See
 [`docs/adr/0005-distribute-via-marketplace-and-releases.md`](docs/adr/0005-distribute-via-marketplace-and-releases.md)
 for the rationale.
+
+## Screenshots
+
+![Tokyo Night](screenshots/tokyo-night.png)
+
+<details>
+<summary>Tokyo Night Storm</summary>
+
+![Tokyo Night Storm](screenshots/tokyo-night-storm.png)
+
+</details>
+
+<details>
+<summary>Tokyo Night Moon</summary>
+
+![Tokyo Night Moon](screenshots/tokyo-night-moon.png)
+
+</details>
+
+<details>
+<summary>Tokyo Night Light</summary>
+
+![Tokyo Night Light](screenshots/tokyo-night-light.png)
+
+</details>
+
+Screenshots are captured from an isolated sandbox IDE - a separate copy of the
+pinned EAP build, so your installed IDE and its settings are untouched - using
+the throwaway sources in
+[`screenshots/sample-project`](screenshots/sample-project):
+
+```bash
+mise run demo        # launches the sandbox with the sample project open, Tokyo Night preselected
+```
+
+Open a source file (for example `ExampleService.kt`), then capture a window
+screenshot. Switch variant under Settings > Appearance & Behavior > Appearance and
+repeat. Save the images as `screenshots/<variant>.png`.
 
 ## Contributing
 

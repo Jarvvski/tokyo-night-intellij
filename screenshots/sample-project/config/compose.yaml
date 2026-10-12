@@ -1,0 +1,16 @@
+# Local stack used while capturing theme screenshots.
+services:
+  api:
+    image: ghcr.io/example/api:1.4
+    environment:
+      LOG_LEVEL: debug
+      DATABASE_URL: postgres://demo:demo@db:5432/demo
+    depends_on:
+      - db
+  db:
+    image: postgres:17
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
