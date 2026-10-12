@@ -27,3 +27,21 @@ run = "./gradlew publishPlugin"
 [tasks.demo]
 description = "Launch a sandbox IDE with Tokyo Night preselected for screenshots"
 run = "./gradlew runIde --args=$PWD/screenshots/sample-project"
+
+[tasks.spotifast-install]
+description = "Install the generated Spotifast palettes and reload them"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+src="$PWD/dist/spotifast"
+dst="$HOME/Library/Application Support/me.paolino.spotifast/themes"
+mkdir -p "$dst"
+cp "$src"/*.json "$dst"/
+if command -v spotifast >/dev/null 2>&1; then
+  spotifast reload-themes
+elif [ -x /Applications/Spotifast.app/Contents/MacOS/Spotifast ]; then
+  /Applications/Spotifast.app/Contents/MacOS/Spotifast reload-themes
+else
+  echo "Spotifast not found; palettes copied to $dst" >&2
+fi
+"""

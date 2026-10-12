@@ -6,6 +6,10 @@ Stdlib only. Reads ``tools/vendor/tokyo-night.json`` and emits, per variant:
     src/main/resources/themes/<Slug>.theme.json   (UI chrome)
     src/main/resources/themes/<Slug>.xml          (editor scheme)
 
+It also emits Spotifast custom palettes for the same four variants:
+
+    dist/spotifast/<Name>.json                    (Spotifast theme)
+
 Generated outputs are committed; never hand-edit them (see AGENTS.md).
 
 The generator is the core: it loads the pinned palette, normalizes the upstream
@@ -30,6 +34,7 @@ ROOT = Path(__file__).resolve().parent.parent
 TOOLS_DIR = ROOT / "tools"
 VENDOR = TOOLS_DIR / "vendor" / "tokyo-night.json"
 THEMES_DIR = ROOT / "src" / "main" / "resources" / "themes"
+SPOTIFAST_DIR = ROOT / "dist" / "spotifast"
 
 AUTHOR = "Adam Jarvis"
 
@@ -51,6 +56,7 @@ from mappings import (  # noqa: E402
     diff_vcs_map,
     islands_palette,
     scheme_colors,
+    spotifast_map,
     syntax_map,
     ui_map,
     ui_metrics,
@@ -477,6 +483,17 @@ def _attribute_options(style: dict) -> list[tuple[str, dict[str, object]]]:
     return entries
 
 
+def render_spotifast_json(theme: dict) -> str:
+    """Render a Spotifast custom palette from the pinned variant."""
+    style = normalize_variant(theme)
+    colors = spotifast_map.resolve_palette(style, blend)
+    document = {
+        "base": theme.get("appearance", "dark"),
+        "colors": colors,
+    }
+    return json.dumps(document, indent=2) + "\n"
+
+
 def render_scheme_xml(theme: dict) -> str:
     style = normalize_variant(theme)
     lines = [
@@ -513,6 +530,10 @@ def build_outputs() -> dict[Path, str]:
         theme = by_name[display_name]
         outputs[THEMES_DIR / f"{slug}.theme.json"] = render_theme_json(theme)
         outputs[THEMES_DIR / f"{slug}.xml"] = render_scheme_xml(theme)
+        # Spotifast lists palettes by filename, so name the file after the
+        # variant. This intentionally replaces the ``Tokyo Night.json`` that
+        # Spotifast ships; it never rewrites theme files, so the override sticks.
+        outputs[SPOTIFAST_DIR / f"{display_name}.json"] = render_spotifast_json(theme)
     return outputs
 
 
@@ -542,8 +563,8 @@ def main() -> int:
         print(f"Generator output up to date ({len(outputs)} files).")
         return 0
 
-    THEMES_DIR.mkdir(parents=True, exist_ok=True)
     for path, content in outputs.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
         print(f"wrote {path.relative_to(ROOT)}")
     return 0

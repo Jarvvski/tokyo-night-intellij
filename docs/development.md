@@ -11,6 +11,7 @@ tools/vendor/tokyo-night.json   pinned upstream palette (source of truth)
 tools/generate.py               generator (stdlib only)
 tools/mappings/*.py             Zed -> IntelliJ key mappings per subsystem
 src/main/resources/themes/*     generated theme.json + xml (committed)
+dist/spotifast/*                generated Spotifast palettes (committed)
 ```
 
 Generated outputs are committed, so building the plugin does not need Python.
@@ -42,6 +43,13 @@ uv run tools/generate.py
 Commit the changed files under `src/main/resources/themes/`. Do not hand-edit
 generated files - the next regeneration would discard the edit. See
 [`CLAUDE.md`](../CLAUDE.md) for the full rule.
+
+## Spotifast palettes
+
+The generator also writes Spotifast custom palettes to `dist/spotifast/` from the
+same pinned palette, via [`tools/mappings/spotifast_map.py`](../tools/mappings/spotifast_map.py).
+Commit them alongside the IntelliJ resources. `mise run spotifast-install` copies
+them into Spotifast's themes folder and runs `spotifast reload-themes`.
 
 ## Screenshots
 

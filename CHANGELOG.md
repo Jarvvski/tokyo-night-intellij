@@ -11,6 +11,9 @@ release is tagged.
 
 ### Added
 
+- Spotifast custom palettes for all four variants, generated from the same
+  pinned Zed palette and installed with `mise run spotifast-install`. The
+  `Tokyo Night` palette replaces the one Spotifast ships under that name.
 - README screenshots for all four variants, an install badge, and a reproducible
   screenshot sample project with a `mise run demo` task.
 

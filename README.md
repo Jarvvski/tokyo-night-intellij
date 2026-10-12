@@ -68,6 +68,16 @@ The default variant is shown at the top. The other three:
 
 </details>
 
+## Spotifast
+
+The same four variants are also emitted as [Spotifast](https://spotifast.rocks)
+custom palettes, driven by the same pinned Zed palette. The generator writes
+them to `dist/spotifast/`, and `mise run spotifast-install` copies them into
+Spotifast's themes folder and reloads them (no restart needed).
+
+`dist/spotifast/Tokyo Night.json` intentionally replaces the palette Spotifast
+ships under that name.
+
 ## Development
 
 How the generator works, and how to build, regenerate and capture screenshots:
