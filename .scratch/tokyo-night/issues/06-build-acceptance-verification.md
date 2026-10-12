@@ -1,6 +1,6 @@
 # Build & acceptance verification
 
-Status: claimed
+Status: resolved
 
 Blocked by: 01, 02, 03, 04a, 04b, 04c, 04d, 05
 
@@ -135,3 +135,9 @@ No mapping changes resulted - nothing that is actually invalid was found.
 Follow-ups filed as ticket **07** (visual polish): unify backgrounds on `bgBase`
 (the editor text area previously inherited Darcula's grey; chrome used the darker
 surface shade) and keep compact-mode project-tree rows at ~30px.
+
+Resolved: the owner completed the manual pass on IU-262 across the four variants
+through 0.8.3 (backgrounds, chrome, syntax, diff/VCS, terminal ANSI, Light
+contrast) and confirmed it reads correctly. The offline key validation against
+build 262 plus the live pass close criteria 1-4; no unresolved-key warnings were
+observed.

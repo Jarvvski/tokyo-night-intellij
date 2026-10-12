@@ -1,6 +1,6 @@
 # Visual polish: unified backgrounds & compact density
 
-Status: claimed
+Status: resolved
 
 ## Background
 
@@ -110,5 +110,5 @@ Commit 5 (live screen exploration), released as `0.8.3`:
 Note: the macOS global menu bar (File/Edit/...) is OS-drawn and cannot be themed by
 an IntelliJ theme plugin; only in-IDE menus/dropdowns are themable.
 
-Pending: owner confirms backgrounds, tree rows, edges, folded chip, dialogs/lists
-and toolbar/stripe/menu surfaces, then this ticket can be resolved.
+Resolved: owner confirmed on `0.8.3` that the backgrounds, tree rows, edges,
+folded chip, dialogs/lists and toolbar/stripe/menu surfaces all read correctly.
