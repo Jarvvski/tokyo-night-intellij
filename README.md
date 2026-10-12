@@ -1,5 +1,11 @@
 # Tokyo Night for IntelliJ IDEA
 
+<div align="center">
+  <a href="https://plugins.jetbrains.com/plugin/35030">
+    <img src="screenshots/logo.svg" width="160" alt="Tokyo Night logo">
+  </a>
+</div>
+
 A theme-only IntelliJ plugin that ports all four variants of the Zed theme
 [`ssaunderss/zed-tokyo-night`](https://github.com/ssaunderss/zed-tokyo-night)
 to IntelliJ IDEA: **Tokyo Night**, **Tokyo Night Storm**, **Tokyo Night Moon**,
@@ -13,6 +19,8 @@ Target platform: **IntelliJ IDEA 2026.2+** (`sinceBuild = 262`, no `untilBuild`)
 built and verified against the pinned **2026.3** EAP archive.
 
 [![Install from JetBrains Marketplace](https://img.shields.io/badge/JetBrains%20Marketplace-install-blue?logo=jetbrains&logoColor=white)](https://plugins.jetbrains.com/plugin/35030)
+
+![Tokyo Night](screenshots/tokyo-night.png)
 
 ## Variants
 
@@ -119,7 +127,7 @@ for the rationale.
 
 ## Screenshots
 
-![Tokyo Night](screenshots/tokyo-night.png)
+The default variant is shown at the top of this README. The other three:
 
 <details>
 <summary>Tokyo Night Storm</summary>

@@ -4,6 +4,20 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+Changes land under **Unreleased** and move to a dated version section when a
+release is tagged.
+
+## Unreleased
+
+### Added
+
+- README screenshots for all four variants, an install badge, and a reproducible
+  screenshot sample project with a `mise run demo` task.
+
+### Changed
+
+- Rewrote the plugin description shown on the JetBrains Marketplace listing.
+
 ## 0.9.1 - 2026-10-12
 
 ### Changed
