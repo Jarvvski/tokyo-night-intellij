@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project uses
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.8.1 - 2026-10-09
+
+### Fixed
+
+- **Window and panel edges.** Platform chrome borders no longer use the near-black
+  palette value; they inherit Islands' subtle borders, removing the hard black
+  frames and separators that appeared once the surface was flattened.
+- **Folded (condensed) text.** The collapsed-code chip no longer inherits
+  Darcula's grey box; its background and border are subtle tints derived from the
+  editor surface and foreground.
+
 ## 0.8.0 - 2026-10-09
 
 ### Changed

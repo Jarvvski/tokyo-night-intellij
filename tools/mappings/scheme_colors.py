@@ -40,6 +40,8 @@ SCHEME_COLOR_MAP: dict[object, str | tuple[str, ...]] = {
         "GUTTER_BACKGROUND",
         "EDITOR_GUTTER_BACKGROUND",
     ),
+    # Folded/collapsed text chip border (derived in the generator).
+    "editor.folded_border": "FOLDED_TEXT_BORDER_COLOR",
     # Changed-line gutter markers.
     "created": "ADDED_LINES_COLOR",
     "modified": "MODIFIED_LINES_COLOR",
@@ -63,5 +65,10 @@ SCHEME_BACKGROUND_ATTRIBUTE_MAP: dict[str, dict[str, object]] = {
     "TEXT": {
         "FOREGROUND": ("editor.foreground", "text"),
         "BACKGROUND": ("editor.background", "background"),
+    },
+    # Collapsed/folded text chip; without this it inherits Darcula's grey box.
+    "FOLDED_TEXT_ATTRIBUTES": {
+        "FOREGROUND": ("text.muted", "editor.foreground"),
+        "BACKGROUND": ("editor.folded_background",),
     },
 }

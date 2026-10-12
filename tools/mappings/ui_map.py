@@ -121,14 +121,11 @@ UI_MAP: dict[str, tuple[str, ...]] = {
         "ToolWindow.Stripe.borderColor",
         "MainToolbar.borderColor",
     ),
-    # Borders.
-    "border": (
-        "Borders.color",
-        "Window.border",
-        "EditorTabs.borderColor",
-        "ToolWindow.borderColor",
-    ),
-    "borderVariant": ("Borders.ContrastBorderColor",),
+    # Platform chrome borders (Borders.color, Borders.ContrastBorderColor,
+    # Window.border, ToolWindow.borderColor, EditorTabs.borderColor) are left to
+    # the parent Islands theme: overriding them with our near-black palette value
+    # painted hard black frames/separators once the surface flattened to bgBase.
+    # Only the focus ring is themed here.
     "borderFocus": ("Component.focusedBorderColor",),
     # Foregrounds.
     "fg": (

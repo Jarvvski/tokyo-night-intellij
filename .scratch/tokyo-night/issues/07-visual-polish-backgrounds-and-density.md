@@ -72,5 +72,19 @@ What landed (version `0.8.0`):
 - Commit 2: new `tools/mappings/ui_metrics.py` (`Tree.rowHeight.compact = 30`)
   merged into `theme.json` `ui`; regenerated resources.
 
-Pending: the owner enables Compact Mode and confirms the unified backgrounds and
-tree row height visually, then this ticket can be resolved.
+Commit 3 (owner feedback after installing a `0.8.0` artifact), released as
+`0.8.1` - a patch bump so an already-installed `0.8.0` is seen as updatable:
+
+- Window/panel edges looked wrong once flattened: we overrode platform chrome
+  borders (`Borders.color`, `Borders.ContrastBorderColor`, `Window.border`,
+  `ToolWindow.borderColor`, `EditorTabs.borderColor`) with near-black `#101014`,
+  while Islands itself uses subtle values (`ToolWindow.borderColor` transparent).
+  Dropped those overrides so Islands' subtle borders return; only `borderFocus`
+  remains themed.
+- The collapsed `import ...` chip showed Darcula's grey box because we never
+  defined `FOLDED_TEXT_ATTRIBUTES`. Added it (`FOREGROUND = fgMuted`,
+  `BACKGROUND = editor.folded_background`) plus `FOLDED_TEXT_BORDER_COLOR`, with
+  both colours derived as blends of editor bg toward fg (0.10 / 0.18).
+
+Pending: owner re-installs and confirms edges + folded chip (and backgrounds and
+tree rows from commits 1-2), then this ticket can be resolved.

@@ -73,6 +73,8 @@ REQUIRED_NORMALIZED_COLORS: tuple[str, ...] = (
     "version_control.renamed",
     "editor.indent_guide",
     "editor.indent_guide_active",
+    "editor.folded_background",
+    "editor.folded_border",
     "panel.indent_guide",
     "panel.indent_guide_active",
     "panel.indent_guide_hover",
@@ -278,6 +280,14 @@ def normalize_variant(theme: dict) -> dict:
                 f"diff.{name}_background",
                 blend(editor_bg, accent, t=0.15),
             )
+
+    # Derivation (heuristic): folded/collapsed text chip. Zed has no dedicated
+    # key; blend the editor surface slightly toward the foreground so the chip
+    # reads as a subtle pill instead of inheriting Darcula's grey box.
+    folded_fg = get("editor.foreground") or get("text")
+    if isinstance(editor_bg, str) and isinstance(folded_fg, str):
+        _fill(style, "editor.folded_background", blend(editor_bg, folded_fg, t=0.10))
+        _fill(style, "editor.folded_border", blend(editor_bg, folded_fg, t=0.18))
 
     # Derivation (heuristic): VCS blame annotation author slots. Upstream
     # ``accents`` supplies a ramp of tinted hues; take the first five as opaque

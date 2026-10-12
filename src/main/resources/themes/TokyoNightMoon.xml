@@ -10,6 +10,7 @@
     <option name="SELECTED_INDENT_GUIDE" value="353b57"/>
     <option name="GUTTER_BACKGROUND" value="222436"/>
     <option name="EDITOR_GUTTER_BACKGROUND" value="222436"/>
+    <option name="FOLDED_TEXT_BORDER_COLOR" value="33374d"/>
     <option name="ADDED_LINES_COLOR" value="c3e88d"/>
     <option name="MODIFIED_LINES_COLOR" value="ffc777"/>
     <option name="DELETED_LINES_COLOR" value="ff757f"/>
@@ -1306,6 +1307,12 @@
       <value>
         <option name="FOREGROUND" value="828bb8"/>
         <option name="BACKGROUND" value="222436"/>
+      </value>
+    </option>
+    <option name="FOLDED_TEXT_ATTRIBUTES">
+      <value>
+        <option name="FOREGROUND" value="7982a9"/>
+        <option name="BACKGROUND" value="2c2e43"/>
       </value>
     </option>
     <option name="CONSOLE_BLACK_OUTPUT">
