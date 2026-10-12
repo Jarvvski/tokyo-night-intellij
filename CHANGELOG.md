@@ -15,6 +15,9 @@ All notable changes to this project are documented here. The format follows
   background rather than the darker surface shade, matching Zed's single-surface
   look. Popups, menus and tooltips stay slightly elevated so overlays still read
   as such.
+- **Comfortable compact tree rows.** In Compact Mode the project-tree row height
+  is now 30px instead of the compact default (~22px), closer to Zed's project
+  panel rhythm; other compact spacing is unchanged.
 
 ## 0.7.1 - 2026-10-09
 

@@ -102,6 +102,9 @@
     "Banner.infoBackground": "#d5d6db",
     "Notification.ToolWindow.informativeBackground": "#d5d6db",
     "Banner.infoBorderColor": "#343b58",
-    "Notification.ToolWindow.informativeBorderColor": "#343b58"
+    "Notification.ToolWindow.informativeBorderColor": "#343b58",
+    "Tree": {
+      "rowHeight.compact": 30
+    }
   }
 }

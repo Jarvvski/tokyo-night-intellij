@@ -46,7 +46,14 @@ SLUGS = {
 if str(TOOLS_DIR) not in sys.path:
     sys.path.insert(0, str(TOOLS_DIR))
 
-from mappings import ansi_map, diff_vcs_map, scheme_colors, syntax_map, ui_map  # noqa: E402
+from mappings import (  # noqa: E402
+    ansi_map,
+    diff_vcs_map,
+    scheme_colors,
+    syntax_map,
+    ui_map,
+    ui_metrics,
+)
 
 _HEX_RE = re.compile(r"^(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$")
 
@@ -335,6 +342,11 @@ def render_theme_json(theme: dict) -> str:
     is_dark = theme.get("appearance") == "dark"
     style = normalize_variant(theme)
     palette = resolve_palette(style)
+    # Colour overrides come from ui_map.UI_MAP (flat dotted keys); metric
+    # overrides come from ui_metrics.UI_METRICS (nested component groups) and are
+    # merged last so they can never clash with a colour key.
+    ui: dict[str, object] = dict(resolve_ui(style, palette))
+    ui.update(ui_metrics.UI_METRICS)
     document = {
         "name": theme["name"],
         "dark": is_dark,
@@ -342,8 +354,7 @@ def render_theme_json(theme: dict) -> str:
         "parentTheme": "Islands Dark" if is_dark else "Islands Light",
         "editorScheme": f"/themes/{slug}.xml",
         "colors": palette,
-        # Component overrides come from ui_map.UI_MAP; empty inherits Islands.
-        "ui": resolve_ui(style, palette),
+        "ui": ui,
     }
     return json.dumps(document, indent=2) + "\n"
 

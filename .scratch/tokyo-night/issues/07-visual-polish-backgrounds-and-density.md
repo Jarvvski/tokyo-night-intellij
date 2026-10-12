@@ -61,3 +61,16 @@ Mechanism notes (researched against the owner's build-262 install):
   `ui.Tree.rowHeight.compact`, `ui.ToolWindow.Header.height.compact`, ...). These
   metric keys are not in `IntelliJPlatform.themeMetadata.json`, so they are
   validated against built-in-theme precedent rather than that metadata.
+
+What landed (version `0.8.0`):
+
+- Commit 1: `tools/mappings/scheme_colors.py` (`SCHEME_BACKGROUND_ATTRIBUTE_MAP`
+  emitting the editor `TEXT` attribute), `tools/generate.py` (emit attribute
+  backgrounds), `tools/mappings/ui_map.py` (chrome + `Editor.background` moved to
+  `bgBase`; removed the now-unused `bgSurface` UI targets and `tabBar` palette),
+  regenerated resources.
+- Commit 2: new `tools/mappings/ui_metrics.py` (`Tree.rowHeight.compact = 30`)
+  merged into `theme.json` `ui`; regenerated resources.
+
+Pending: the owner enables Compact Mode and confirms the unified backgrounds and
+tree row height visually, then this ticket can be resolved.
