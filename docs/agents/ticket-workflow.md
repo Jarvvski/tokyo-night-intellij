@@ -22,7 +22,8 @@ human decision.
 
 - `AGENTS.md` - landing rules, generated-output rule, toolchain.
 - `CONTEXT.md` - domain vocabulary; use these terms in output.
-- `plan.md` - the relevant phase for background and constraints.
+- `docs/development.md` and `docs/adr/` - how the plugin is built, and the
+  decisions that constrain it.
 - The ticket itself - its Scope and Acceptance criteria are authoritative.
 - The code/mappings it touches.
 
@@ -89,7 +90,7 @@ Implement ticket `<TICKET>` in the tokyo-night-intellij repo at
 this session's scope - do not stop after the first slice.
 
 Follow docs/agents/ticket-workflow.md end to end:
-1. Read AGENTS.md, CONTEXT.md, plan.md (the relevant phase), <TICKET>, and the
+1. Read AGENTS.md, CONTEXT.md, docs/development.md, docs/adr/, <TICKET>, and the
    code/mappings it touches.
 2. Satisfy every acceptance criterion in <TICKET>.
 3. Keep repo invariants: never hand-edit src/main/resources/themes/, drive values

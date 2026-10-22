@@ -20,7 +20,7 @@ Selection:
 
 Plan phase (you are in plan mode):
 - Read the chosen ticket in full, plus the code/mappings it touches and the
-  relevant plan.md phase.
+  relevant ADR under docs/adr/.
 - Produce a concise plan covering EVERY acceptance criterion and every
   `## Commits` item; name the exact files you will change; flag any ADR conflict
   rather than silently overriding it.

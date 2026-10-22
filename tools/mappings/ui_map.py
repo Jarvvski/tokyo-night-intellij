@@ -13,8 +13,8 @@ side effects or I/O):
   alpha-transparent borders) to a tuple of IntelliJ ``ui.*`` target keys; an
   empty map inherits everything from the parent Islands theme.
 
-Populated by the mapping-modules ticket from ``plan.md`` Phase 3 and the Islands
-recipe. Every target key was validated against the shipped
+Populated by the mapping-modules ticket from the Islands recipe. Every target
+key was validated against the shipped
 ``IntelliJPlatform.themeMetadata.json`` / ``JDK.themeMetadata.json`` at tag
 ``idea/263.6259.32`` where listed; container-surface backgrounds such as
 ``Dialog/Panel/List/Tree/Table`` are not enumerated there but are real platform
