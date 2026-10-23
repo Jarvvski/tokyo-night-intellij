@@ -86,8 +86,8 @@ How the generator works, and how to build, regenerate and capture screenshots:
 Cutting a release: [docs/releasing.md](docs/releasing.md).
 
 Conventions and agent guidance are in [`CLAUDE.md`](CLAUDE.md) and
-[`AGENTS.md`](AGENTS.md); the plan of record is [`plan.md`](plan.md).
+[`AGENTS.md`](AGENTS.md).
 
 ## License
 
-MIT. See [`LICENSE`](LICENSE), which also records upstream attribution.
+MIT. See [`LICENSE`](LICENSE). Upstream attribution is in [`NOTICE.md`](NOTICE.md).

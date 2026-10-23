@@ -1,0 +1,25 @@
+# GitHub Linguist otherwise reports this repo as Python.
+#
+# Theme XML and JSON are data languages, so they are omitted from the language
+# bar. The stdlib generator under tools/ and the screenshot sample then account
+# for almost all counted bytes. Vendored and documentation paths are excluded
+# from statistics; they stay in the tree.
+#
+# Marking src/main/resources/themes as linguist-generated would also drop the
+# theme files from statistics and collapse them in diffs, so those files are
+# counted with linguist-detectable instead. They are the plugin.
+
+tools/** linguist-vendored
+*.py linguist-vendored
+
+screenshots/sample-project/** linguist-documentation
+
+# *.gradle.kts is detected as Gradle (data) and would disappear once Python is
+# excluded. Count the build scripts as Kotlin.
+*.gradle.kts linguist-language=Kotlin
+
+src/main/resources/**/*.xml linguist-detectable=true
+src/main/resources/**/*.theme.json linguist-detectable=true
+
+# Generated Spotifast palettes. Not part of the IDE plugin.
+dist/spotifast/** linguist-generated

@@ -65,4 +65,4 @@ repeat. Save the images as `screenshots/<variant>.png`.
 ## Project conventions
 
 Conventions and agent guidance live in [`CLAUDE.md`](../CLAUDE.md) and
-[`AGENTS.md`](../AGENTS.md). The plan of record is [`plan.md`](../plan.md).
+[`AGENTS.md`](../AGENTS.md). Architecture decisions are in [`docs/adr/`](adr/).

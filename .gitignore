@@ -15,3 +15,11 @@ certs/
 *.crt
 *.key
 .env
+
+# Agent-local scratch. Not part of the plugin. .claude/skills is a symlink farm
+# into .agents/skills; skills-lock.json pins that third-party skill pack.
+.scratch/
+.claude/
+.agents/
+skills-lock.json
+plan.md
